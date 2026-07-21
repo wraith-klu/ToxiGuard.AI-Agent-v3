@@ -23,4 +23,4 @@ COPY . .
 EXPOSE 8000
 
 # Start backend using gunicorn with uvicorn workers for production performance
-CMD ["gunicorn", "app.main:app", "-w", "2", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8000"]
+CMD ["sh", "-c", "gunicorn app.main:app -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:${PORT:-8000}"]
